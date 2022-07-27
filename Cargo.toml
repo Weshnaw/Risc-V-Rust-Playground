@@ -1,0 +1,28 @@
+[package]
+name = "rv_playground"
+version = "0.0.0"
+authors = ["Brendon Fallquist"]
+edition = "2018"
+license = "ISC"
+readme = "README.md"
+
+[dependencies]
+embedded-hal = "0.2.6"
+hifive1 = { version = "0.10.0", features = ["board-hifive1-revb"] }
+panic-halt = "0.2.0"
+riscv = "0.7.0"
+riscv-rt = "0.8.0"
+ads1x1x = "0.2.2"
+nb = "1.0.0"
+pid = "3.0.0"
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "rv_playground"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
